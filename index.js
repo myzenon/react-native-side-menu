@@ -124,8 +124,10 @@ export default class SideMenu extends React.Component {
     const openMenuOffset = width * this.state.openOffsetMenuPercentage;
     const hiddenMenuOffset = width * this.state.hiddenMenuOffsetPercentage;
     this.setState({ width, height, openMenuOffset, hiddenMenuOffset }, () => {
-      const newLeft = this.menuPositionMultiplier() * this.state.openMenuOffset;
-      this.state.left.setValue(newLeft);
+      if(this.props.isOpen) {
+        const newLeft = this.menuPositionMultiplier() * this.state.openMenuOffset;
+        this.state.left.setValue(newLeft);
+      }
     });
   }
 
